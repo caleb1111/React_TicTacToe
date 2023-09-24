@@ -5,11 +5,12 @@ import { useState } from "react";
 export const Board = () => {
   const [squares, setSquares] = useState(Array(9).fill(null));
   const [turns, setTurns] = useState(true);
+  const winner = getWinner(squares);
 
   function handleClick(i: number) {
     // prevents overwriting of the squares
     // if a value is present in a square || a winner exists, return
-    if (squares[i] || getWinner(squares)) {
+    if (squares[i] || winner) {
       return;
     }
     // duplicate the squares array
@@ -40,7 +41,6 @@ export const Board = () => {
     return null;
   }
 
-  const winner = getWinner(squares);
   let status: String;
   if (winner) {
     status = "Winner: " + winner;
