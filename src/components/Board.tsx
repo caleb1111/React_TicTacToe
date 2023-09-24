@@ -27,20 +27,6 @@ export const Board = () => {
     setTurns(!turns);
   }
 
-  function getWinner(squares: Array<number>) {
-    for (var i in winCase) {
-      const [a, b, c] = winCase[i];
-      if (
-        squares[a] &&
-        squares[b] === squares[a] &&
-        squares[c] === squares[a]
-      ) {
-        return squares[a];
-      }
-    }
-    return null;
-  }
-
   let status: String;
   if (winner) {
     status = "Winner: " + winner;
@@ -82,3 +68,13 @@ const winCase = [
   [0, 4, 8],
   [2, 4, 6],
 ];
+
+function getWinner(squares: Array<number>) {
+  for (var i in winCase) {
+    const [a, b, c] = winCase[i];
+    if (squares[a] && squares[b] === squares[a] && squares[c] === squares[a]) {
+      return squares[a];
+    }
+  }
+  return null;
+}
