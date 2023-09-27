@@ -1,14 +1,12 @@
-import React from "react";
+import React from 'react';
 
 interface SquareProps {
   value: number;
   handleClick: () => void;
 }
 
-export const Square = ({ value, handleClick }: SquareProps) => {
-  return (
-    <button className="square" onClick={handleClick}>
-      {value}
-    </button>
-  );
-};
+export const Square: React.FC<SquareProps> = ({ value, handleClick }) => (
+  <button className="square" onClick={handleClick}>
+    {value}
+  </button>
+);
